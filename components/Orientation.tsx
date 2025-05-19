@@ -34,11 +34,11 @@ export const Orientation = ({
   return (
     <>
       <Text style={{ fontSize: 18, color: "blue" }}>
-        Orientation: {orientation && OrientationNameMap[orientation]}
+        Orientation: {orientation !== null && OrientationNameMap[orientation]}
       </Text>
       <Text style={{ fontSize: 18, color: "blue" }}>
         Orientation Lock:
-        {orientationLock && OrientationLockNameMap[orientationLock]}
+        {orientationLock !== null && OrientationLockNameMap[orientationLock]}
       </Text>
       <Text style={{ fontSize: 18, color: "blue" }}>
         Platform Orientation:
