@@ -1,6 +1,8 @@
 import { useOrientationInfo } from "@/hooks/useOrientationInfo";
 import { Text } from "react-native";
 
+
+
 export const Orientation = ({
   orientation,
   orientationLock,
