@@ -28,7 +28,8 @@ export const useOrientationInfo = () => {
     })();
 
     ScreenOrientation.addOrientationChangeListener((event) => {
-      console.log("Orientation changed:", event);
+      setOrientation(event.orientationInfo.orientation);
+      setOrientationLock(event.orientationLock);
     });
 
     return () => {
