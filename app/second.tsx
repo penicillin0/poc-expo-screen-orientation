@@ -5,8 +5,12 @@ import { useEffect } from "react";
 import { Alert, Button, Text, View } from "react-native";
 
 export default function SecondScreen() {
-  const { orientation, orientationLock, platformOrientation } =
-    useOrientationInfo();
+  const {
+    orientation,
+    orientationLock,
+    platformOrientation,
+    reloadOrientation,
+  } = useOrientationInfo();
 
   useEffect(() => {
     (async () => {
@@ -45,6 +49,7 @@ export default function SecondScreen() {
             "Orientation Lock",
             "The screen orientation has been locked to portrait up."
           );
+          await reloadOrientation();
         }}
       />
 
@@ -57,6 +62,7 @@ export default function SecondScreen() {
             "Orientation Unlock",
             "The screen orientation has been unlocked."
           );
+          await reloadOrientation();
         }}
       />
     </View>

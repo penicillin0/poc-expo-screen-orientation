@@ -30,7 +30,7 @@ export const Orientation = ({
   orientation,
   orientationLock,
   platformOrientation,
-}: ReturnType<typeof useOrientationInfo>) => {
+}: Omit<ReturnType<typeof useOrientationInfo>, "reloadOrientation">) => {
   return (
     <>
       <Text style={{ fontSize: 18, color: "blue" }}>

@@ -9,6 +9,16 @@ export const useOrientationInfo = () => {
   const [platformOrientation, setPlatformOrientation] =
     useState<ScreenOrientation.PlatformOrientationInfo | null>(null);
 
+  const reloadOrientation = async () => {
+    const orientation = await ScreenOrientation.getOrientationAsync();
+    const orientationLock = await ScreenOrientation.getOrientationLockAsync();
+    const platformOrientation =
+      await ScreenOrientation.getPlatformOrientationLockAsync();
+    setOrientation(orientation);
+    setOrientationLock(orientationLock);
+    setPlatformOrientation(platformOrientation);
+  };
+
   useEffect(() => {
     (async () => {
       const orientation = await ScreenOrientation.getOrientationAsync();
@@ -41,5 +51,6 @@ export const useOrientationInfo = () => {
     orientation,
     orientationLock,
     platformOrientation,
+    reloadOrientation,
   };
 };
