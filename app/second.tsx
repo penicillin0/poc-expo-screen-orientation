@@ -1,3 +1,4 @@
+import { Orientation } from "@/components/Orientation";
 import { useOrientationInfo } from "@/hooks/useOrientationInfo";
 import * as ScreenOrientation from "expo-screen-orientation";
 import { useEffect } from "react";
@@ -26,15 +27,11 @@ export default function SecondScreen() {
       <Text style={{ fontSize: 24, fontWeight: "bold" }}>
         Hello, Second Screen!
       </Text>
-      <Text style={{ fontSize: 18, color: "blue" }}>
-        Orientation: {orientation}
-      </Text>
-      <Text style={{ fontSize: 18, color: "blue" }}>
-        Orientation Lock: {orientationLock}
-      </Text>
-      <Text style={{ fontSize: 18, color: "blue" }}>
-        Platform Orientation: {JSON.stringify(platformOrientation)}
-      </Text>
+      <Orientation
+        orientation={orientation}
+        orientationLock={orientationLock}
+        platformOrientation={platformOrientation}
+      />
 
       <Button
         title="lock"
