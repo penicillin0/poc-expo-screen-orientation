@@ -44,6 +44,11 @@ export default function SecondScreen() {
           await ScreenOrientation.lockAsync(
             ScreenOrientation.OrientationLock.PORTRAIT_UP
           );
+          await ScreenOrientation.lockPlatformAsync({
+            screenOrientationArrayIOS: [
+              ScreenOrientation.Orientation.PORTRAIT_UP,
+            ],
+          });
 
           Alert.alert(
             "Orientation Lock",
@@ -57,6 +62,16 @@ export default function SecondScreen() {
         title="unlock"
         onPress={async () => {
           await ScreenOrientation.unlockAsync();
+
+          await ScreenOrientation.lockPlatformAsync({
+            screenOrientationArrayIOS: [
+              ScreenOrientation.Orientation.UNKNOWN,
+              ScreenOrientation.Orientation.PORTRAIT_UP,
+              ScreenOrientation.Orientation.PORTRAIT_DOWN,
+              ScreenOrientation.Orientation.LANDSCAPE_LEFT,
+              ScreenOrientation.Orientation.LANDSCAPE_RIGHT,
+            ],
+          });
 
           Alert.alert(
             "Orientation Unlock",
