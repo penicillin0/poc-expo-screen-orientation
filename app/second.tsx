@@ -1,85 +1,13 @@
-import { Orientation } from "@/components/Orientation";
-import { useOrientationInfo } from "@/hooks/useOrientationInfo";
-import * as ScreenOrientation from "expo-screen-orientation";
-import { useEffect } from "react";
-import { Alert, Button, Text, View } from "react-native";
+import { Text, View } from "react-native";
+import { LANDSCAPE, OrientationLocker } from "react-native-orientation-locker";
 
 export default function SecondScreen() {
-  const {
-    orientation,
-    orientationLock,
-    platformOrientation,
-    reloadOrientation,
-  } = useOrientationInfo();
-
-  useEffect(() => {
-    (async () => {
-      await ScreenOrientation.lockAsync(
-        ScreenOrientation.OrientationLock.PORTRAIT_UP
-      );
-    })();
-
-    return () => {
-      (async () => {
-        await ScreenOrientation.unlockAsync();
-      })();
-    };
-  }, []);
-
   return (
     <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-      <Orientation
-        orientation={orientation}
-        orientationLock={orientationLock}
-        platformOrientation={platformOrientation}
-      />
-
+      <OrientationLocker orientation={LANDSCAPE} />
       <Text style={{ fontSize: 24, fontWeight: "bold" }}>
         Hello, Second Screen!
       </Text>
-
-      <Button
-        title="lock"
-        onPress={async () => {
-          await ScreenOrientation.lockAsync(
-            ScreenOrientation.OrientationLock.PORTRAIT_UP
-          );
-          await ScreenOrientation.lockPlatformAsync({
-            screenOrientationArrayIOS: [
-              ScreenOrientation.Orientation.PORTRAIT_UP,
-            ],
-          });
-
-          Alert.alert(
-            "Orientation Lock",
-            "The screen orientation has been locked to portrait up."
-          );
-          await reloadOrientation();
-        }}
-      />
-
-      <Button
-        title="unlock"
-        onPress={async () => {
-          await ScreenOrientation.unlockAsync();
-
-          await ScreenOrientation.lockPlatformAsync({
-            screenOrientationArrayIOS: [
-              ScreenOrientation.Orientation.UNKNOWN,
-              ScreenOrientation.Orientation.PORTRAIT_UP,
-              ScreenOrientation.Orientation.PORTRAIT_DOWN,
-              ScreenOrientation.Orientation.LANDSCAPE_LEFT,
-              ScreenOrientation.Orientation.LANDSCAPE_RIGHT,
-            ],
-          });
-
-          Alert.alert(
-            "Orientation Unlock",
-            "The screen orientation has been unlocked."
-          );
-          await reloadOrientation();
-        }}
-      />
     </View>
   );
 }
