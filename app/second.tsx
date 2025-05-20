@@ -2,7 +2,7 @@ import { Orientation } from "@/components/Orientation";
 import { useOrientationInfo } from "@/hooks/useOrientationInfo";
 import * as ScreenOrientation from "expo-screen-orientation";
 import { useEffect } from "react";
-import { Alert, Button, Text, View } from "react-native";
+import { Text, View } from "react-native";
 
 export default function SecondScreen() {
   const {
@@ -37,49 +37,6 @@ export default function SecondScreen() {
       <Text style={{ fontSize: 24, fontWeight: "bold" }}>
         Hello, Second Screen!
       </Text>
-
-      <Button
-        title="lock"
-        onPress={async () => {
-          await ScreenOrientation.lockAsync(
-            ScreenOrientation.OrientationLock.PORTRAIT_UP
-          );
-          await ScreenOrientation.lockPlatformAsync({
-            screenOrientationArrayIOS: [
-              ScreenOrientation.Orientation.PORTRAIT_UP,
-            ],
-          });
-
-          Alert.alert(
-            "Orientation Lock",
-            "The screen orientation has been locked to portrait up."
-          );
-          await reloadOrientation();
-        }}
-      />
-
-      <Button
-        title="unlock"
-        onPress={async () => {
-          await ScreenOrientation.unlockAsync();
-
-          await ScreenOrientation.lockPlatformAsync({
-            screenOrientationArrayIOS: [
-              ScreenOrientation.Orientation.UNKNOWN,
-              ScreenOrientation.Orientation.PORTRAIT_UP,
-              ScreenOrientation.Orientation.PORTRAIT_DOWN,
-              ScreenOrientation.Orientation.LANDSCAPE_LEFT,
-              ScreenOrientation.Orientation.LANDSCAPE_RIGHT,
-            ],
-          });
-
-          Alert.alert(
-            "Orientation Unlock",
-            "The screen orientation has been unlocked."
-          );
-          await reloadOrientation();
-        }}
-      />
     </View>
   );
 }
