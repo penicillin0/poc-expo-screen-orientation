@@ -1,6 +1,7 @@
+import { Link } from "expo-router";
 import * as ScreenOrientation from "expo-screen-orientation";
 import { useEffect } from "react";
-import { Text, View } from "react-native";
+import { Alert, Text, View } from "react-native";
 
 export default function SecondScreen() {
   useEffect(() => {
@@ -8,11 +9,17 @@ export default function SecondScreen() {
       await ScreenOrientation.lockAsync(
         ScreenOrientation.OrientationLock.LANDSCAPE_RIGHT
       );
+      Alert.alert(
+        "SecondScreen: Orientation Locked",
+        "The screen orientation has been locked to LANDSCAPE_RIGHT.",
+        [{ text: "OK" }]
+      );
     })();
 
     return () => {
       (async () => {
         await ScreenOrientation.unlockAsync();
+        console.log("SecondScreen: Orientation unlocked");
       })();
     };
   }, []);
@@ -22,6 +29,9 @@ export default function SecondScreen() {
       <Text style={{ fontSize: 24, fontWeight: "bold" }}>
         Hello, Second Screen!
       </Text>
+      <Link href="/">
+        <Text style={{ fontSize: 18, color: "blue" }}>Go to First Screen</Text>
+      </Link>
     </View>
   );
 }

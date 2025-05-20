@@ -1,7 +1,7 @@
 import { Link } from "expo-router";
 import * as ScreenOrientation from "expo-screen-orientation";
 import { useEffect } from "react";
-import { Text, View } from "react-native";
+import { Alert, Text, View } from "react-native";
 
 export default function IndexScreen() {
   useEffect(() => {
@@ -9,11 +9,17 @@ export default function IndexScreen() {
       await ScreenOrientation.lockAsync(
         ScreenOrientation.OrientationLock.PORTRAIT_UP
       );
+      Alert.alert(
+        "SecondScreen: Orientation Locked",
+        "The screen orientation has been locked to LANDSCAPE_RIGHT.",
+        [{ text: "OK" }]
+      );
     })();
 
     return () => {
       (async () => {
         await ScreenOrientation.unlockAsync();
+        console.log("IndexScreen: Orientation unlocked");
       })();
     };
   }, []);
