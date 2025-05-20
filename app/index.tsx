@@ -10,8 +10,8 @@ export default function IndexScreen() {
         ScreenOrientation.OrientationLock.PORTRAIT_UP
       );
       Alert.alert(
-        "SecondScreen: Orientation Locked",
-        "The screen orientation has been locked to LANDSCAPE_RIGHT.",
+        "IndexScreen: Orientation Locked",
+        "The screen orientation has been locked to PORTRAIT_UP.",
         [{ text: "OK" }]
       );
     })();

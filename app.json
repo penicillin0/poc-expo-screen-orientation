@@ -3,7 +3,6 @@
     "name": "poc-expo-screen-orientation",
     "slug": "poc-expo-screen-orientation",
     "version": "1.0.0",
-    "orientation": "portrait",
     "icon": "./assets/images/icon.png",
     "scheme": "pocexposcreenorientation",
     "userInterfaceStyle": "automatic",
@@ -43,7 +42,7 @@
       [
         "expo-screen-orientation",
         {
-          "initialOrientation": "DEFAULT"
+          "initialOrientation": "ALL"
         }
       ]
     ],
