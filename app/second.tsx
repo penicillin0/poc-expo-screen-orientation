@@ -6,7 +6,7 @@ export default function SecondScreen() {
   useEffect(() => {
     (async () => {
       await ScreenOrientation.lockAsync(
-        ScreenOrientation.OrientationLock.PORTRAIT_UP
+        ScreenOrientation.OrientationLock.LANDSCAPE_RIGHT
       );
     })();
 
