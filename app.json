@@ -3,16 +3,18 @@
     "name": "poc-expo-screen-orientation",
     "slug": "poc-expo-screen-orientation",
     "version": "1.0.0",
-    "orientation": "landscape",
+    "orientation": "portrait",
     "icon": "./assets/images/icon.png",
     "scheme": "pocexposcreenorientation",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "ios": {
+      "requireFullScreen": true,
       "supportsTablet": true,
       "bundleIdentifier": "com.penicillin0.pocexposcreenorientation",
       "infoPlist": {
-        "ITSAppUsesNonExemptEncryption": false
+        "ITSAppUsesNonExemptEncryption": false,
+        "EXDefaultScreenOrientationMask": "UIInterfaceOrientationMaskAll"
       }
     },
     "android": {
