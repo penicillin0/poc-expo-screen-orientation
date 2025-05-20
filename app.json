@@ -38,12 +38,7 @@
           "backgroundColor": "#ffffff"
         }
       ],
-      [
-        "expo-screen-orientation",
-        {
-          "initialOrientation": "DEFAULT"
-        }
-      ]
+      "react-native-orientation-director"
     ],
     "experiments": {
       "typedRoutes": true
