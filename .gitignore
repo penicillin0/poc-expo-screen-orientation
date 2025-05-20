@@ -40,3 +40,10 @@ app-example
 
 *.ipa
 
+ios/pocexposcreenorientation
+ios/pocexposcreenorientation.xcodeproj
+Podfile*
+.xcode.env
+
+ios/pocexposcreenorientation.xcworkspace/contents.xcworkspacedata
+ios/.gitignore
